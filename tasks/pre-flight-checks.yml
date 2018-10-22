@@ -13,7 +13,7 @@
         aws_access_key_id == ''
 
 - fail:
-    msg: "You need to set aws_secret_access_key
+    msg: "You need to set aws_secret_access_key"
   when: aws_secret_access_key is not defined or
         aws_secret_access_key == ''
 
