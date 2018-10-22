@@ -1,0 +1,2 @@
+---
+- include_tasks: pre-flight-checks.yml

@@ -1,0 +1,5 @@
+valid_aws_output_formats: [json, text, table]
+valid_aws_regions:
+  - eu-west-1
+  - eu-west-2
+  - eu-west-3

@@ -1,0 +1,18 @@
+---
+- fail:
+    msg: "The output format you have selected is not valid"
+  when: aws_output_format not in valid_aws_output_formats
+
+- fail:
+    msg: "The region you have selected is not valid"
+  when: aws_region not in valid_aws_regions
+
+- fail:
+    msg: "You need to set aws_access_key_id"
+  when: aws_access_key_id is not defined or
+        aws_access_key_id == ''
+
+- fail:
+    msg: "You need to set aws_secret_access_key
+  when: aws_secret_access_key is not defined or
+        aws_secret_access_key == ''
