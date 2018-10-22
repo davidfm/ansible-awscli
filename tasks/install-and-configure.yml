@@ -5,4 +5,27 @@
     state: present
     executable: "{{ pip_executable }}"
 
+- name: "Get {{ linux_user }}'s home directory"
+  command: "grep {{ linux_user }} /etc/passwd"
+  register: grep_result
 
+- name: "Create user_home variable"
+  set_fact:
+    user_home: "{{ grep_result.stdout.split(':')[-2] }}"
+
+- name: "Create AWS directory"
+  file:
+    path: "{{ user_home }}/.aws"
+    state: directory
+    owner: "{{ linux_user }}"
+    group: "{{ linux_user }}"
+    mode: 0755
+
+
+- name: "Add config files"
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ user_home }}/.aws/{{ item }}"
+    owner: "{{ linux_user }}"
+    group: "{{ linux_user }}"
+    mode: 0600
