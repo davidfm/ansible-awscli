@@ -13,7 +13,7 @@
   set_fact:
     user_home: "{{ grep_result.stdout.split(':')[-2] }}"
 
-- name: "Create AWS directory"
+- name: "Create aws directory"
   file:
     path: "{{ user_home }}/.aws"
     state: directory
@@ -29,3 +29,6 @@
     owner: "{{ linux_user }}"
     group: "{{ linux_user }}"
     mode: 0600
+  with_items:
+    - config
+    - credentials
