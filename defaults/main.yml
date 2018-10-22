@@ -1,3 +1,4 @@
 ---
 aws_region: 'eu-west-2'
-aws_output_format: 'json'
+aws_output_format:
+pip_executable: pip3

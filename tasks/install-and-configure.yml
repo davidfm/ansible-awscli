@@ -1,0 +1,8 @@
+---
+- name: "pip install AWS cli"
+  pip:
+    name: awscli
+    state: present
+    executable: "{{ pip_executable }}"
+
+
