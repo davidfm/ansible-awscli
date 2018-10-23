@@ -8,6 +8,7 @@
 - name: "Get {{ linux_user }}'s home directory"
   command: "grep {{ linux_user }} /etc/passwd"
   register: grep_result
+  changed_when: False
 
 - name: "Create user_home variable"
   set_fact:
